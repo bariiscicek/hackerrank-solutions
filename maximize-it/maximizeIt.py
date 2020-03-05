@@ -21,12 +21,12 @@ def maximizeIt(m,lists):
         for j in range(len(lists[i])):
             obj=obj+x[i][j]*lists[i][j]**2
     model.Add(obj-m*k>=0)
-    model.Maximize(obj+m*k)
+    model.Maximize(1*(obj-m*k)+200*k)
 
     solver = cp_model.CpSolver()
     status = solver.Solve(model)
 
-    return solver.ObjectiveValue()-solver.Value(k)*m*2
+    return solver.ObjectiveValue()
 
 
 m=100
